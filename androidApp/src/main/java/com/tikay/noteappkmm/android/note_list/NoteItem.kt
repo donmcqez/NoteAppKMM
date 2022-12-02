@@ -16,10 +16,12 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.tikay.noteappkmm.domain.note.Note
-import com.tikay.noteappkmm.domain.time.DateTimeUtil
+import com.tikay.noteappkmm.domain.utils.DateTimeUtil
+import com.tikay.noteappkmm.presentation.BabyBlueHex
 
 @Composable
 fun NoteItem(
@@ -60,7 +62,11 @@ fun NoteItem(
             )
         }
         Spacer(modifier = Modifier.height(16.dp))
-        Text(text = note.content, fontWeight = FontWeight.Light)
+        Text(
+            text = note.content,
+            fontWeight = FontWeight.Light,
+            modifier = Modifier
+        )
         Spacer(modifier = Modifier.height(16.dp))
         Text(
             text = formattedDate,
@@ -68,6 +74,18 @@ fun NoteItem(
             modifier = Modifier.align(Alignment.End)
         )
     }
+}
 
-
+@Preview
+@Composable
+fun NoteItemPreview() {
+    val note = Note(
+        id = 1L,"Title","Content", BabyBlueHex,DateTimeUtil.now()
+    )
+    NoteItem(
+        note = note,
+        backgroundColor = Color(note.colorHex),
+        onNoteClicked = {  },
+        onDeleteClicked = {  }
+    )
 }

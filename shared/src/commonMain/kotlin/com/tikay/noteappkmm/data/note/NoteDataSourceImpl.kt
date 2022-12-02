@@ -1,13 +1,14 @@
 package com.tikay.noteappkmm.data.note
 
+import com.tikay.noteappkmm.data.note.repository.NoteDataSource
 import com.tikay.noteappkmm.database.NoteDatabase
 import com.tikay.noteappkmm.domain.note.Note
-import com.tikay.noteappkmm.domain.note.NoteDataSource
-import com.tikay.noteappkmm.domain.time.DateTimeUtil
+import com.tikay.noteappkmm.domain.utils.DateTimeUtil
 
-class SqlDelightNoteDataSource(
-    db: NoteDatabase
-) : NoteDataSource {
+/**
+ *  Aggregates data from local and remote sources
+ */
+class NoteDataSourceImpl(db: NoteDatabase) : NoteDataSource {
     private val queries = db.noteQueries
 
     override suspend fun insertNote(note: Note) {
@@ -15,7 +16,7 @@ class SqlDelightNoteDataSource(
             id = note.id,
             title = note.title,
             content = note.content,
-            colorHex = note.hexColor,
+            colorHex = note.colorHex,
             createdAt = DateTimeUtil.toEpochMillis(note.createdAt)
         )
     }

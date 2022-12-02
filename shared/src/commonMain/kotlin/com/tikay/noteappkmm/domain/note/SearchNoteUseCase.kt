@@ -1,6 +1,6 @@
 package com.tikay.noteappkmm.domain.note
 
-import com.tikay.noteappkmm.domain.time.DateTimeUtil
+import com.tikay.noteappkmm.domain.utils.DateTimeUtil
 
 class SearchNoteUseCase {
     fun execute(notes:List<Note>,query:String):List<Note>{

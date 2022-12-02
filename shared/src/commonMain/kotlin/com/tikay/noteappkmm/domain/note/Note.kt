@@ -7,7 +7,7 @@ data class Note(
     val id:Long?,
     val title:String,
     val content:String,
-    val hexColor:Long,
+    val colorHex:Long,
     val createdAt:LocalDateTime
 ){
     companion object{

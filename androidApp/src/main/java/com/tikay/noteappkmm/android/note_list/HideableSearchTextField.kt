@@ -1,5 +1,7 @@
 package com.tikay.noteappkmm.android.note_list
 
+import android.content.res.Configuration.UI_MODE_NIGHT_NO
+import android.content.res.Configuration.UI_MODE_NIGHT_YES
 import androidx.compose.animation.AnimatedVisibility
 import androidx.compose.animation.fadeIn
 import androidx.compose.animation.fadeOut
@@ -17,6 +19,7 @@ import androidx.compose.material.icons.filled.Search
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 
 @Composable
@@ -74,4 +77,18 @@ fun HideableSearchTextField(
         }
 
     }
+}
+
+@Preview(showBackground = true)
+@Preview(showBackground = true, showSystemUi = true, uiMode = UI_MODE_NIGHT_YES)
+@Preview(showBackground = false, showSystemUi = false, uiMode = UI_MODE_NIGHT_NO)
+@Composable
+fun HideableSearchTextFieldPreview() {
+    HideableSearchTextField(
+        text = "search",
+        isSearchActive = false,
+        onCloseClicked = {},
+        onTextChanged = {},
+        onSearchClicked = {}
+    )
 }
